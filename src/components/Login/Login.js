@@ -24,7 +24,7 @@ export default function Login() {
     promise
       .then((r) => {
         const obj = {token: r.data.token, user: r.data.user};
-        localStorage.setItem("myWalletUser", JSON.stringify(obj));
+        localStorage.setItem("CinemaTopyUser", JSON.stringify(obj));
         navigate("/home");
       })
       .catch(() => {
