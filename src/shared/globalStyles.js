@@ -54,16 +54,21 @@ button {
 a {
 	text-decoration: none; 
 }
-
 * {
     box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	color: #2b2b2b;
 }
 body {
-    
+    background-color: #f8f8f8;
 }
 .root {
 	height: 100%;
     width: 100%;
+}
+input:focus {
+	outline: none;
 }
   
 `;
