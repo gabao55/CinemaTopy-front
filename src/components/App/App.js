@@ -4,6 +4,7 @@ import PrivatePage from "../PrivatePage/PrivatePage";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
 import Home from "../Home/Home";
+import Cart from "../Cart/Cart";
 
 export default function App() {
   
@@ -19,6 +20,11 @@ export default function App() {
               <PrivatePage>
                 <Home />
               </PrivatePage>
+            }
+          /> 
+          <Route path="/carrinho"
+            element={
+                <Cart />
             }
           /> 
         </Routes>
