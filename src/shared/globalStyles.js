@@ -58,6 +58,7 @@ a {
     box-sizing: border-box;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
+	color: #2b2b2b;
 }
 body {
     background-color: #f8f8f8;
