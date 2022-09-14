@@ -3,24 +3,23 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/axiosService";
 import { ThreeDots } from  'react-loader-spinner';
+import { useForm } from "../../shared/useForm.js";
 
 export default function Login() {
 
   const navigate = useNavigate();
-  const [formInf, setFormInf] = useState({email:"", password:""});
+  const [form, handleForm] = useForm({
+    initState: {
+      email: "",
+      password: "",
+    }
+  });
   const [disabled, setDisabled] = useState(false);
 
-  function updateInfs(e){
-    setFormInf({
-      ...formInf,
-      [e.target.name] : e.target.value 
-    });
-  }
-
-  function handleForm(e){
+  function sendForm(e){
     e.preventDefault();
     setDisabled(true);
-    const promise = login(formInf);
+    const promise = login(form);
     promise
       .then((r) => {
         const obj = {token: r.data.token, user: r.data.user};
@@ -32,34 +31,19 @@ export default function Login() {
         setDisabled(false);
       });  
   }
-
-  /* function handleForm(e){
-    e.preventDefault();
-    const promise = login({...});
-    promise 
-      .then((r) => {
-        const obj = {token: r.data.token, user: r.data.user};
-        localStorage.setItem("CinemaTopy", JSON.stringify(obj));
-      })
-      .catch(() => {
-        alert("Erro ao logar!");
-      });  
-  } */
-
-  // coloquei aqui só pra ter um direcionamento do localStorage
   
     return (
       <>
         <Auth disabled={disabled}>
           <h1>CinemaTopy</h1>
-          <form onSubmit={handleForm}>
-            <TemplateInput required type="email" name="email" value={formInf.email}
+          <form onSubmit={sendForm}>
+            <TemplateInput required type="email" name="email" value={form.email}
               placeholder="E-mail" disabled={disabled}
-              onChange={updateInfs}
+              onChange={handleForm}
             />
-            <TemplateInput required type="password" name="password" value={formInf.password}
+            <TemplateInput required type="password" name="password" value={form.password}
               placeholder="Senha" disabled={disabled}
-              onChange={updateInfs}
+              onChange={handleForm}
             />
             <TemplateButton disabled={disabled} height="45" width="300" type="submit" >
               {disabled? <ThreeDots color="#ffffff" height={40} width={50}/> : "Entrar"}
