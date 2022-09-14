@@ -24,6 +24,9 @@ export default function Cart () {
                             <ion-icon name="create-outline"></ion-icon>
                         </div>
                     </div>
+                    <div className="delete">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </div>
                 </div>
                 <div className="product">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6tKpND3LMQf2oI0r1ER6Ek6GcpVGGdusyDQ&usqp=CAU" alt="" />
@@ -37,6 +40,9 @@ export default function Cart () {
                             <span>3</span>
                             <ion-icon name="create-outline"></ion-icon>
                         </div>
+                    </div>
+                    <div className="delete">
+                        <ion-icon name="trash-outline"></ion-icon>
                     </div>
                 </div>
                 <div className="total">

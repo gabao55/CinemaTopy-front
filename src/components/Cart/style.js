@@ -20,6 +20,7 @@ const CartWrapper = styled.div`
 
     header ion-icon {
         font-size: 25px;
+        cursor: pointer;
     }
 
     main {
@@ -48,6 +49,7 @@ const CartWrapper = styled.div`
         width: 80px;
         height: 80px;
         border-radius: 20px;
+        cursor: pointer;
     }
 
     .product-specs {
@@ -55,6 +57,7 @@ const CartWrapper = styled.div`
         word-wrap: break-word;
         display: flex;
         flex-direction: column;
+        cursor: pointer;
     }
 
     .product-specs p {
@@ -84,6 +87,7 @@ const CartWrapper = styled.div`
         font-size: 12px;
         border-radius: 8px;
         background-color: #dddddd;
+        cursor: pointer;
     }
 
     .product-costs p {
@@ -94,6 +98,18 @@ const CartWrapper = styled.div`
 
     .product-costs span, ion-icon {
         font-size: 12px;
+    }
+
+    .delete {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .delete ion-icon {
+        font-size: 20px;
+        color: #ee766d;
+        cursor: pointer;
     }
 
     .total {
