@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/";
+const BASE_URL = "https://cinematopy-api.herokuapp.com/";
 
 function createHeader() {
   const auth = JSON.parse(localStorage.getItem("CinemaTopy"));
