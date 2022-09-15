@@ -26,4 +26,22 @@ function validToken() {
   return promise;
 }
 
-export { singUp, login, validToken };
+function listCartProducts() {
+  const header = createHeader();
+  const promise = axios.get(BASE_URL + "cart/products", header);
+  return promise;
+}
+
+function deleteCartProduct(body) {
+  const header = createHeader();
+  const promise = axios.post(BASE_URL + "cart/delete-product", body, header);
+  return promise;
+}
+
+function cleanCart() {
+  const header = createHeader();
+  const promise = axios.delete(BASE_URL + "cart/products", header);
+  return promise;
+}
+
+export { singUp, login, validToken, listCartProducts, deleteCartProduct, cleanCart };

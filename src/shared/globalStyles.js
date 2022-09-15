@@ -70,6 +70,12 @@ body {
 input:focus {
 	outline: none;
 }
+h1 {
+	font-size: 32px;
+	font-weight: 700;
+	font-family: 'Satisfy', cursive;
+	cursor: pointer;
+}
   
 `;
  

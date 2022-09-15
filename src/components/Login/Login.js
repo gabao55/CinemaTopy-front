@@ -46,7 +46,7 @@ export default function Login() {
               onChange={handleForm}
             />
             <TemplateButton disabled={disabled} height="45" width="300" type="submit" >
-              {disabled? <ThreeDots color="#ffffff" height={40} width={50}/> : "Entrar"}
+              {disabled? <ThreeDots color="#ffffff" height={20} width={50}/> : "Entrar"}
             </TemplateButton>
           </form>
           <p onClick={() => navigate("/cadastro")}>Primeira vez? Cadastre-se!</p>

@@ -8,10 +8,6 @@ const Auth = styled.div`
     margin-top: 90px;
     h1 {
         margin-bottom: 40px;
-        font-size: 32px;
-        font-weight: 700;
-        font-family: 'Satisfy', cursive;
-        cursor: pointer;
     }
     form {
         width: 300px;
@@ -46,18 +42,21 @@ const Auth = styled.div`
 const TemplateButton = styled.button`
     width: ${props => props.width}px;
     height: ${props => props.height}px;
+    padding: 0 25px;
     background: #ee766d;
     border-radius: 5px;
     font-size: 20px;
     line-height: 23px;
     display: flex;
-    justify-content: center;
+    justify-content: ${props => props.spaced ? "space-between": "center"};
     align-items: center;
     color: #FFFFFF;
     cursor: pointer;
     font-weight: 700;
-    svg {
-        margin-top: 40px;
+
+    ion-icon {
+        font-size: 26px;
+        color: #FFFFFF;
     }
 `;
 
