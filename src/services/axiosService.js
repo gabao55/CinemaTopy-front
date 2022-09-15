@@ -32,6 +32,12 @@ function listCartProducts() {
   return promise;
 }
 
+function updateCartProductAmount(body) {
+  const header = createHeader();
+  const promise = axios.put(BASE_URL + "cart/product", body, header);
+  return promise;
+}
+
 function deleteCartProduct(body) {
   const header = createHeader();
   const promise = axios.post(BASE_URL + "cart/delete-product", body, header);
@@ -44,4 +50,4 @@ function cleanCart() {
   return promise;
 }
 
-export { singUp, login, validToken, listCartProducts, deleteCartProduct, cleanCart };
+export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart };

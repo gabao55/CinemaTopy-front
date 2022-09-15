@@ -78,7 +78,7 @@ const CartWrapper = styled.div`
     }
 
     .product-costs div {
-        width: 40px;
+        min-width: 40px;
         height: 25px;
         padding: 0 8px;
         display: flex;
@@ -98,6 +98,53 @@ const CartWrapper = styled.div`
 
     .product-costs span, ion-icon {
         font-size: 12px;
+        margin: 0 3px;
+    }
+
+    .product-costs form {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: #f8f8f8;
+    }
+
+    .product-costs input {
+        width: 30px;
+        height: 25px;
+        background: #FFFFFF;
+        border-radius: 5px;
+        border: 1px solid #2b2b2b;
+        font-size: 12px;
+        font-family: 'Montserrat';
+        color: #ee766d;
+        text-align: center;
+        &::placeholder {
+            font-size: 20px;
+            line-height: 23px;
+            color: #2b2b2b;
+            font-family: 'Montserrat', sans-serif;
+        }
+    }
+
+    .product-costs button {
+        width: 25px;
+        height: 25px;
+        background: #ee766d;
+        border-radius: 5px;
+        font-size: 20px;
+        line-height: 23px;
+        display: flex;
+        justify-content: ${props => props.spaced ? "space-between": "center"};
+        align-items: center;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-weight: 700;
+
+        ion-icon {
+            font-size: 26px;
+            color: #FFFFFF;
+        }
     }
 
     .delete {
