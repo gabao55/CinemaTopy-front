@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { cleanCart, deleteCartProduct, listCartProducts } from "../../services/axiosService";
+import { cleanCart, deleteCartProduct, listCartProducts, updateCartProductAmount } from "../../services/axiosService";
 import { TemplateButton } from "../../shared/styles";
 import { useNavigate } from "react-router-dom";
 import { CartWrapper } from "./style";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { useForm } from "../../shared/useForm";
 
 export default function Cart () {
     const [products, setProducts] = useState([]);
@@ -93,6 +94,14 @@ export default function Cart () {
 }
 
 function CartProduct ({ product, itemsDeleted, setItemsDeleted }) {
+    const [isEditing, setIsEditing] = useState(false);
+    const [form, handleForm] = useForm({
+        initState: {
+            productId: product.productDetails._id,
+            amount: product.amount,
+        }
+    });
+
     function remove() {
         confirmAlert({
             title: 'Confirme para deletar',
@@ -118,6 +127,17 @@ function CartProduct ({ product, itemsDeleted, setItemsDeleted }) {
         });        
     }
 
+    function sendForm(e) {
+        e.preventDefault();
+        const promise = updateCartProductAmount(form);
+
+        promise
+            .then(() => setItemsDeleted(itemsDeleted + 1))
+            .catch(e => console.log(e.message));
+
+        setIsEditing(false);
+    }
+
     return (
         <div className="product">
             <img src={product.productDetails.image} alt="" />
@@ -127,10 +147,21 @@ function CartProduct ({ product, itemsDeleted, setItemsDeleted }) {
             </div>
             <div className="product-costs">
                 <p>R$ {String((product.productDetails.price / 100).toFixed(2)).replace(".", ",")}</p>
-                <div>
-                    <span>{product.amount}</span>
-                    <ion-icon name="create-outline"></ion-icon>
-                </div>
+                {
+                    isEditing ?
+                    <form onSubmit={sendForm}>
+                        <input required type="number" min="1" name="amount"
+                        value={form.amount} placeholder={form.amount} onChange={handleForm} />
+                        <button>
+                            <ion-icon name="checkmark-outline"></ion-icon>
+                        </button>
+                    </form>
+                        :
+                    <div>
+                        <span>{product.amount}</span>
+                        <ion-icon name="create-outline" onClick={() => setIsEditing(true)}></ion-icon>
+                    </div>
+                }
             </div>
             <div className="delete">
                 <ion-icon name="trash-outline" onClick={remove}></ion-icon>

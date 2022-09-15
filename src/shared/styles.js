@@ -67,7 +67,7 @@ const TemplateInput = styled.input`
     border-radius: 5px;
     border: 1px solid #2b2b2b;
     font-size: 20px;
-    font-family: 'Raleway';
+    font-family: 'Montserrat';
     color: #ee766d;
     padding-left: 10px;
     &::placeholder {
