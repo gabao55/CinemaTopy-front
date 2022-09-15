@@ -55,7 +55,7 @@ const TemplateButton = styled.button`
     font-weight: 700;
 
     ion-icon {
-        font-size: 20px;
+        font-size: 26px;
         color: #FFFFFF;
     }
 `;
