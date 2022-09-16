@@ -5,6 +5,8 @@ import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
 import Home from "../Home/Home";
 import Cart from "../Cart/Cart";
+import Checkout from "../Checkout/Checkout";
+import Address from "../Checkout/Address";
 
 export default function App() {
   
@@ -23,6 +25,20 @@ export default function App() {
               </PrivatePage>
             }
           /> 
+          <Route path="/endereco"
+            element={
+              <PrivatePage>
+                <Address />
+              </PrivatePage>
+            }
+          /> 
+          <Route path="/checkout"
+            element={
+              <PrivatePage>
+                <Checkout />
+              </PrivatePage>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
