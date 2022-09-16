@@ -23,7 +23,7 @@ export default function SignUp() {
     const promise = singUp(form);
     promise
       .then((r) => {
-        navigate("/");
+        navigate("/login");
       })
       .catch(() => {
         alert("Erro ao cadastrar!");
@@ -52,7 +52,7 @@ export default function SignUp() {
               {disabled? <ThreeDots color="#ffffff" height={40} width={50}/> : "Cadastrar"}
             </TemplateButton>
           </form>
-          <p onClick={() => navigate("/")}>Já tem uma conta? Entre agora!</p>
+          <p onClick={() => navigate("/login")}>Já tem uma conta? Entre agora!</p>
         </Auth>
       </>
     );

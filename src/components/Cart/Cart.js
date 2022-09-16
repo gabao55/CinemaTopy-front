@@ -50,8 +50,8 @@ export default function Cart () {
     return (
         <CartWrapper>
             <header>
-                <ion-icon name="arrow-back-outline" onClick={() => navigate('/home')}></ion-icon>
-                <h1 onClick={() => navigate('/home')}>CinemaTopy</h1>
+                <ion-icon name="arrow-back-outline" onClick={() => navigate('/')}></ion-icon>
+                <h1 onClick={() => navigate('/')}>CinemaTopy</h1>
                 <ion-icon name="trash-outline" onClick={removeAllProducts}></ion-icon>
             </header>
             {
@@ -76,7 +76,7 @@ export default function Cart () {
             }
             
             <TemplateButton disabled={false} spaced={true} height="45" width="300" 
-            onClick={() => products.length === 0 ? navigate('/home') : navigate('/endereço')}>
+            onClick={() => products.length === 0 ? navigate('/') : navigate('/endereço')}>
                 {
                     products.length === 0 ?
                     <>

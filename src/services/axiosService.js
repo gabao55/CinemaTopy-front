@@ -50,4 +50,15 @@ function cleanCart() {
   return promise;
 }
 
-export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart };
+function listProducts() {
+  const promise = axios.get(BASE_URL + "products");
+  return promise;
+}
+
+function addProduct(body) {
+  const header = createHeader();
+  const promise = axios.post(BASE_URL + "cart/product", body, header);
+  return promise;
+}
+
+export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart, listProducts, addProduct };
