@@ -13,18 +13,14 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
           <Route path="/cadastro" element={<SignUp />} />
-          <Route path="/home"
-            element={
-              <PrivatePage>
-                <Home />
-              </PrivatePage>
-            }
-          /> 
+          <Route path="/login" element={<Login />} /> 
           <Route path="/carrinho"
             element={
+              <PrivatePage>
                 <Cart />
+              </PrivatePage>
             }
           /> 
         </Routes>
