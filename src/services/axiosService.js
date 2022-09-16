@@ -61,4 +61,16 @@ function addProduct(body) {
   return promise;
 }
 
-export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart, listProducts, addProduct };
+function addUserPurchaseDetails(body) {
+  const header = createHeader();
+  const promise = axios.put(BASE_URL + 'purchase-details', body, header);
+  return promise
+}
+
+function checkout(body) {
+  const header = createHeader();
+  const promise = axios.post(BASE_URL + 'checkout', body, header);
+  return promise;
+}
+
+export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart, listProducts, addProduct, addUserPurchaseDetails, checkout };

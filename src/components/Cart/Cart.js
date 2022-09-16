@@ -76,7 +76,7 @@ export default function Cart () {
             }
             
             <TemplateButton disabled={false} spaced={true} height="45" width="300" 
-            onClick={() => products.length === 0 ? navigate('/') : navigate('/endereço')}>
+            onClick={() => products.length === 0 ? navigate('/') : navigate('/endereco')}>
                 {
                     products.length === 0 ?
                     <>
