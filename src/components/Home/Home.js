@@ -2,20 +2,26 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { addProduct, listProducts } from "../../services/axiosService";
-import { HomeBG, Itens } from "./style";
+import { HomeBG, Itens, Category } from "./style";
 
 export default function Home() {
 
   const navigate = useNavigate();
   const auth = JSON.parse(localStorage.getItem("CinemaTopy"));
   const [itens, setItens] = useState([]);
+  const category = itens.map(e => e.category);
+  const categories =[...new Set(category)];
 
   useEffect(() => {
+    list();
+  },[]);
+
+  function list() {
     const promise = listProducts();
         promise
             .then(r => setItens(r.data))
             .catch(e => console.log(e.message));
-  },[]);
+  }
 
   function logout(){
     localStorage.clear("CinemaTopy");
@@ -44,10 +50,14 @@ export default function Home() {
                 : <ion-icon name="log-in-outline" onClick={() => navigate("/login")} ></ion-icon>
                 }
             </header>
+            <Category>
+            <h2 onClick={list} >Todos</h2>
+            {categories.map((e,i) => <h2 key={i} onClick={() => setItens(itens.filter(el => el.category === e))} >{e}</h2> )}
+            </Category>
             {itens.map( (e, index) => {
               let stars = [];
               for(let i=0; i<e.rating; i++){
-                stars.push("gambiarra"); // mudar isso!
+                stars.push("stars"); 
               }
               return (
                 <Itens key={index} >
