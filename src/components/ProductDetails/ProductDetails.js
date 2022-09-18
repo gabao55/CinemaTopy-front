@@ -37,7 +37,7 @@ export default function ProductDetails() {
 
   let stars = [];
   for(let i=0; i<product.rating; i++){
-  stars.push("gambiarra"); // mudar isso!
+  stars.push("star");
   }
   
     return (

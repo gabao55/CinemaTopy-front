@@ -10,11 +10,14 @@ flex-direction: column;
 align-items: center;
 
 header {
+    margin-top: 40px;
     width: 100%;
     max-width: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
 }
 
 header ion-icon {
@@ -28,7 +31,7 @@ header ion-icon:first-child {
 `;
 
 const Item = styled.div`
-margin-top: 50px;
+margin-top: 70px;
 background-color: #F6f0f0;
 width: 350px;
 border-radius: 10px;
