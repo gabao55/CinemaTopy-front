@@ -8,7 +8,7 @@ function renderError() {
 
 export default function PrivatePage({ children }) {
 
-  const [render, setRender] = useState(<>children</>);
+  const [render, setRender] = useState(<>{children}</>);
   
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("CinemaTopy"));
