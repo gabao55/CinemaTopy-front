@@ -33,10 +33,11 @@ export default function Cart () {
                         const promise = cleanCart();
 
                         promise
-                            .then(() => alert(`Todos os produtos foram deletados com sucesso`))
+                            .then(() => {
+                                alert(`Todos os produtos foram deletados com sucesso`);
+                                setItemsDeleted(itemsDeleted + products.length);
+                            })
                             .catch(e => console.log(e.message));
-
-                        setItemsDeleted(itemsDeleted + 1);
                     }
                 },
                 {
@@ -113,10 +114,11 @@ function CartProduct ({ product, itemsDeleted, setItemsDeleted }) {
                         const promise = deleteCartProduct({ productId: product.productDetails._id });
 
                         promise
-                            .then(() => alert(`Produto "${product.productDetails.name}" deletado com sucesso`))
+                            .then(() => {
+                                alert(`Produto "${product.productDetails.name}" deletado com sucesso`);
+                                setItemsDeleted(itemsDeleted + 1);
+                            })
                             .catch(e => console.log(e.message));
-
-                        setItemsDeleted(itemsDeleted + 1);
                     }
                 },
                 {
