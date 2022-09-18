@@ -17,7 +17,7 @@ export default function PrivatePage({ children }) {
     } else { 
       verification();
     } // eslint-disable-next-line
-  }, []); 
+  }, [render]); 
 
   function verification() {
     const promise = validToken();

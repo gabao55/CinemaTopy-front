@@ -1,20 +1,22 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { addProduct, listProducts } from "../../services/axiosService";
-import { HomeBG, Itens } from "./style";
+import { useNavigate, useParams } from "react-router-dom";
+import { productDetails, addProduct } from "../../services/axiosService";
+import { HomeBG, Item } from "./style";
 
-export default function Home() {
+export default function ProductDetails() {
 
   const navigate = useNavigate();
   const auth = JSON.parse(localStorage.getItem("CinemaTopy"));
-  const [itens, setItens] = useState([]);
-
+  const [product, setProduct] = useState({});
+  const { id } = useParams();
+  
   useEffect(() => {
-    const promise = listProducts();
+    const promise = productDetails(id);
         promise
-            .then(r => setItens(r.data))
+            .then(r => setProduct(r.data))
             .catch(e => console.log(e.message));
+    // eslint-disable-next-line
   },[]);
 
   function logout(){
@@ -31,6 +33,11 @@ export default function Home() {
     }else {
       alert("Faça o login para poder adicionar o item");
     }  
+  } 
+
+  let stars = [];
+  for(let i=0; i<product.rating; i++){
+  stars.push("gambiarra"); // mudar isso!
   }
   
     return (
@@ -44,28 +51,24 @@ export default function Home() {
                 : <ion-icon name="log-in-outline" onClick={() => navigate("/login")} ></ion-icon>
                 }
             </header>
-            {itens.map( (e, index) => {
-              let stars = [];
-              for(let i=0; i<e.rating; i++){
-                stars.push("gambiarra"); // mudar isso!
-              }
-              return (
-                <Itens key={index} >
-                  <h2>{e.name}</h2>
-                  <Link to={"produto/" + e._id} ><img src={e.image} alt={e.name} /></Link>
-                  <div>
+            <Item>
+                <h2>{product.name}</h2>
+                <img src={product.image} alt={product.name} />
+                <div>
                     <div>
-                      <h3>R$ {(e.price/100).toFixed(2)}</h3>
-                      <p>{stars.map((el, i) => {
-                        return <ion-icon key={i} name="star"></ion-icon>;
-                      })}</p>
+                        <p>{stars.map((el, i) => {
+                            return <ion-icon key={i} name="star"></ion-icon>;
+                        })}</p>
                     </div>
-                    <ion-icon onClick={() => addToCart(e._id)} name="add-circle"></ion-icon>
-                  </div>
-                  
-                </Itens>
-              );
-            })}
-      </HomeBG>
+                    <h3>R$ {(product.price/100).toFixed(2)}</h3>
+                </div>
+                <h4>Adicionar ao Carrinho</h4>
+                <ion-icon onClick={() => addToCart(product._id)} name="add-circle"></ion-icon>
+                <h4>Fabricante</h4>
+                <p>{product.producer}</p>
+                <h4>Descrição</h4>
+                <p>{product.description}</p>
+            </Item>
+    </HomeBG>
     );
 }
