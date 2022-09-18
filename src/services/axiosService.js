@@ -73,4 +73,9 @@ function checkout(body) {
   return promise;
 }
 
-export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart, listProducts, addProduct, addUserPurchaseDetails, checkout };
+function productDetails(id) {
+  const promise = axios.get(BASE_URL + "product/" + id);
+  return promise;
+}
+
+export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart, listProducts, addProduct, addUserPurchaseDetails, checkout, productDetails };

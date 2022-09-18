@@ -27,11 +27,10 @@ header ion-icon:first-child {
 }
 `;
 
-const Itens = styled.div`
+const Item = styled.div`
 margin-top: 50px;
 background-color: #F6f0f0;
-width: 300px;
-height: 300px;
+width: 350px;
 border-radius: 10px;
 display: flex;
 justify-content: space-around;
@@ -39,41 +38,12 @@ align-items: center;
 flex-direction: column;
 
 img {
-    width: 200px;
-    height: 200px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-p > ion-icon {
-    color: #FFD700;
-}
-
-& > div > ion-icon {
-    color: #FFA07A;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
-h2 {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-h3 {
-    font-size: 15px;
-    font-weight: 700;
-    margin: 5px;
-}
-
-& > div {
-    display: flex;
-    width: 200px;
-    justify-content: space-around;
-    align-items: center;
+    margin: 10px 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
 }
 
 `;
 
-export { HomeBG, Itens };
+export { HomeBG, Item };

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addProduct, listProducts } from "../../services/axiosService";
 import { HomeBG, Itens } from "./style";
 
@@ -27,7 +27,7 @@ export default function Home() {
       const promise = addProduct({productId: id, amount: 1});
         promise
             .then( () => alert("Produto adicionado!"))
-            .catch(e => console.log(e.message)); 
+            .catch(() => alert("Produto já está no carrinho!")); 
     }else {
       alert("Faça o login para poder adicionar o item");
     }  
@@ -52,7 +52,7 @@ export default function Home() {
               return (
                 <Itens key={index} >
                   <h2>{e.name}</h2>
-                  <img src={e.image} alt={e.name} />
+                  <Link to={"produto/" + e._id} ><img src={e.image} alt={e.name} /></Link>
                   <div>
                     <div>
                       <h3>R$ {(e.price/100).toFixed(2)}</h3>

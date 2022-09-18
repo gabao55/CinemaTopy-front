@@ -7,6 +7,7 @@ import Home from "../Home/Home";
 import Cart from "../Cart/Cart";
 import Checkout from "../Checkout/Checkout";
 import Address from "../Checkout/Address";
+import ProductDetails from "../ProductDetails/ProductDetails";
 
 export default function App() {
   
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cadastro" element={<SignUp />} />
           <Route path="/login" element={<Login />} /> 
+          <Route path="/produto/:id" element={<ProductDetails />} /> 
           <Route path="/carrinho"
             element={
               <PrivatePage>
