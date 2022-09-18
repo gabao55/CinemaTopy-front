@@ -43,7 +43,7 @@ export default function Checkout() {
                 const promise = cleanCart();
 
                 promise
-                    .then(() => navigate("/obrigado", { state: state.name }))
+                    .then(() => navigate("/obrigado", { state: state }))
                     .catch(e => console.log(e.message));
             })
             .catch(error => {

@@ -14,7 +14,7 @@ export default function ThankYouPage() {
                 <p></p>
             </header>
             <main>
-                <h2>Obrigado por comprar, {state}. Informações da compra serão enviadas ao email registrado.</h2>
+                <h2>Obrigado por comprar, {state.name}. Informações da compra serão enviadas ao email registrado.</h2>
             </main>            
             <TemplateButton disabled={false} height="45" width="300" 
             onClick={() => navigate('/')}>
