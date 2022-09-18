@@ -40,11 +40,10 @@ export default function Checkout() {
 
         promise
             .then(res => {
-                console.log(res.data);
                 const promise = cleanCart();
 
                 promise
-                    .then(() => navigate("/"))
+                    .then(() => navigate("/obrigado", { state: state.name }))
                     .catch(e => console.log(e.message));
             })
             .catch(error => {

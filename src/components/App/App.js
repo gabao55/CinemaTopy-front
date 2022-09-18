@@ -8,6 +8,7 @@ import Cart from "../Cart/Cart";
 import Checkout from "../Checkout/Checkout";
 import Address from "../Checkout/Address";
 import ProductDetails from "../ProductDetails/ProductDetails";
+import ThankYouPage from "../Checkout/ThankYouPage";
 
 export default function App() {
   
@@ -38,6 +39,13 @@ export default function App() {
             element={
               <PrivatePage>
                 <Checkout />
+              </PrivatePage>
+            }
+          />
+          <Route path="/obrigado"
+            element={
+              <PrivatePage>
+                <ThankYouPage />
               </PrivatePage>
             }
           />
