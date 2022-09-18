@@ -9,7 +9,7 @@ flex-direction: column;
 align-items: center;
 
 header {
-    padding: 40px 25px 30px 25px;
+    padding: 40px 25px 50px 25px;
     width: 100%;
     max-width: 500px;
     display: flex;
@@ -30,8 +30,8 @@ header ion-icon:first-child {
     color: #ee766d;
 }
 
-& > div:nth-child(2) {
-    margin-top: 125px;
+& > div:nth-child(3) {
+    margin-top: 135px;
 }
 `;
 
@@ -84,4 +84,24 @@ h3 {
 
 `;
 
-export { HomeBG, Itens };
+const Category = styled.div`
+position: fixed;
+top: 75px;
+display: flex;
+justify-content: space-around;
+align-items: center;
+z-index: 2;
+
+h2 {
+    margin: 2px 5px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    color: #403030;
+    background-color: #F6f0f0;
+    border-radius: 5px;
+    padding: 3px;
+}
+`;
+
+export { HomeBG, Itens, Category };
