@@ -4,17 +4,21 @@ const HomeBG = styled.div`
 width: 100%;
 height: 100%;
 min-height: 100vh;
-padding: 40px 25px 50px 25px;
 display: flex;
 flex-direction: column;
 align-items: center;
 
 header {
+    padding: 40px 25px 30px 25px;
     width: 100%;
     max-width: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: #f8f8f8;
 }
 
 header ion-icon {
@@ -25,10 +29,14 @@ header ion-icon {
 header ion-icon:first-child {
     color: #ee766d;
 }
+
+& > div:nth-child(2) {
+    margin-top: 125px;
+}
 `;
 
 const Itens = styled.div`
-margin-top: 50px;
+margin-bottom: 40px;
 background-color: #F6f0f0;
 width: 300px;
 height: 300px;
