@@ -50,4 +50,32 @@ function cleanCart() {
   return promise;
 }
 
-export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart };
+function listProducts() {
+  const promise = axios.get(BASE_URL + "products");
+  return promise;
+}
+
+function addProduct(body) {
+  const header = createHeader();
+  const promise = axios.post(BASE_URL + "cart/product", body, header);
+  return promise;
+}
+
+function addUserPurchaseDetails(body) {
+  const header = createHeader();
+  const promise = axios.put(BASE_URL + 'purchase-details', body, header);
+  return promise
+}
+
+function checkout(body) {
+  const header = createHeader();
+  const promise = axios.post(BASE_URL + 'checkout', body, header);
+  return promise;
+}
+
+function productDetails(id) {
+  const promise = axios.get(BASE_URL + "product/" + id);
+  return promise;
+}
+
+export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart, listProducts, addProduct, addUserPurchaseDetails, checkout, productDetails };

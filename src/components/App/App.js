@@ -5,6 +5,9 @@ import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
 import Home from "../Home/Home";
 import Cart from "../Cart/Cart";
+import Checkout from "../Checkout/Checkout";
+import Address from "../Checkout/Address";
+import ProductDetails from "../ProductDetails/ProductDetails";
 
 export default function App() {
   
@@ -13,20 +16,31 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
           <Route path="/cadastro" element={<SignUp />} />
-          <Route path="/home"
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/produto/:id" element={<ProductDetails />} /> 
+          <Route path="/carrinho"
             element={
               <PrivatePage>
-                <Home />
+                <Cart />
               </PrivatePage>
             }
           /> 
-          <Route path="/carrinho"
+          <Route path="/endereco"
             element={
-                <Cart />
+              <PrivatePage>
+                <Address />
+              </PrivatePage>
             }
           /> 
+          <Route path="/checkout"
+            element={
+              <PrivatePage>
+                <Checkout />
+              </PrivatePage>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

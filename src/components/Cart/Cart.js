@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { cleanCart, deleteCartProduct, listCartProducts, updateCartProductAmount } from "../../services/axiosService";
 import { TemplateButton } from "../../shared/styles";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartWrapper } from "./style";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -33,10 +33,11 @@ export default function Cart () {
                         const promise = cleanCart();
 
                         promise
-                            .then(() => alert(`Todos os produtos foram deletados com sucesso`))
+                            .then(() => {
+                                alert(`Todos os produtos foram deletados com sucesso`);
+                                setItemsDeleted(itemsDeleted + products.length);
+                            })
                             .catch(e => console.log(e.message));
-
-                        setItemsDeleted(itemsDeleted + 1);
                     }
                 },
                 {
@@ -50,8 +51,8 @@ export default function Cart () {
     return (
         <CartWrapper>
             <header>
-                <ion-icon name="arrow-back-outline" onClick={() => navigate('/home')}></ion-icon>
-                <h1 onClick={() => navigate('/home')}>CinemaTopy</h1>
+                <ion-icon name="arrow-back-outline" onClick={() => navigate('/')}></ion-icon>
+                <h1 onClick={() => navigate('/')}>CinemaTopy</h1>
                 <ion-icon name="trash-outline" onClick={removeAllProducts}></ion-icon>
             </header>
             {
@@ -76,7 +77,7 @@ export default function Cart () {
             }
             
             <TemplateButton disabled={false} spaced={true} height="45" width="300" 
-            onClick={() => products.length === 0 ? navigate('/home') : navigate('/endereço')}>
+            onClick={() => products.length === 0 ? navigate('/') : navigate('/endereco')}>
                 {
                     products.length === 0 ?
                     <>
@@ -113,10 +114,11 @@ function CartProduct ({ product, itemsDeleted, setItemsDeleted }) {
                         const promise = deleteCartProduct({ productId: product.productDetails._id });
 
                         promise
-                            .then(() => alert(`Produto "${product.productDetails.name}" deletado com sucesso`))
+                            .then(() => {
+                                alert(`Produto "${product.productDetails.name}" deletado com sucesso`);
+                                setItemsDeleted(itemsDeleted + 1);
+                            })
                             .catch(e => console.log(e.message));
-
-                        setItemsDeleted(itemsDeleted + 1);
                     }
                 },
                 {
@@ -140,7 +142,7 @@ function CartProduct ({ product, itemsDeleted, setItemsDeleted }) {
 
     return (
         <div className="product">
-            <img src={product.productDetails.image} alt="" />
+            <Link to={"/produto/" + product.productDetails._id} ><img src={product.productDetails.image} alt="" /></Link>
             <div className="product-specs">
                 <p>{product.productDetails.name}</p>
                 <span>{product.productDetails.description}</span>

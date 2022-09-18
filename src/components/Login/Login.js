@@ -24,7 +24,7 @@ export default function Login() {
       .then((r) => {
         const obj = {token: r.data.token, user: r.data.user};
         localStorage.setItem("CinemaTopy", JSON.stringify(obj));
-        navigate("/home");
+        navigate("/");
       })
       .catch(() => {
         alert("Erro ao logar!");
