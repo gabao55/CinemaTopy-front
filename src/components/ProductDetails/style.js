@@ -39,9 +39,47 @@ flex-direction: column;
 
 img {
     margin: 10px 0;
-    width: 300px;
-    height: 300px;
+    width: 330px;
+    height: 330px;
     border-radius: 10px;
+}
+
+p > ion-icon {
+    color: #FFD700;
+}
+
+& > ion-icon {
+    color: #FFA07A;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+h2 {
+    margin: 10px 0;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 5px;
+}
+
+& > div {
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+}
+
+h4 {
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+p {
+    margin-bottom: 5px;
 }
 
 `;

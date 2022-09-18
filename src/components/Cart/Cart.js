@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { cleanCart, deleteCartProduct, listCartProducts, updateCartProductAmount } from "../../services/axiosService";
 import { TemplateButton } from "../../shared/styles";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartWrapper } from "./style";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -140,7 +140,7 @@ function CartProduct ({ product, itemsDeleted, setItemsDeleted }) {
 
     return (
         <div className="product">
-            <img src={product.productDetails.image} alt="" />
+            <Link to={"/produto/" + product.productDetails._id} ><img src={product.productDetails.image} alt="" /></Link>
             <div className="product-specs">
                 <p>{product.productDetails.name}</p>
                 <span>{product.productDetails.description}</span>

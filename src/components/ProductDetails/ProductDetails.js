@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { productDetails } from "../../services/axiosService";
+import { productDetails, addProduct } from "../../services/axiosService";
 import { HomeBG, Item } from "./style";
 
 export default function ProductDetails() {
@@ -24,7 +24,7 @@ export default function ProductDetails() {
     navigate("/");
   }
 
-  /* function addToCart(id){
+  function addToCart(id){
     if(auth){
       const promise = addProduct({productId: id, amount: 1});
         promise
@@ -33,9 +33,12 @@ export default function ProductDetails() {
     }else {
       alert("Faça o login para poder adicionar o item");
     }  
-  } */
+  } 
 
-  console.log(product);
+  let stars = [];
+  for(let i=0; i<product.rating; i++){
+  stars.push("gambiarra"); // mudar isso!
+  }
   
     return (
       <HomeBG>
@@ -49,7 +52,22 @@ export default function ProductDetails() {
                 }
             </header>
             <Item>
+                <h2>{product.name}</h2>
                 <img src={product.image} alt={product.name} />
+                <div>
+                    <div>
+                        <p>{stars.map((el, i) => {
+                            return <ion-icon key={i} name="star"></ion-icon>;
+                        })}</p>
+                    </div>
+                    <h3>R$ {(product.price/100).toFixed(2)}</h3>
+                </div>
+                <h4>Adicionar ao Carrinho</h4>
+                <ion-icon onClick={() => addToCart(product._id)} name="add-circle"></ion-icon>
+                <h4>Fabricante</h4>
+                <p>{product.producer}</p>
+                <h4>Descrição</h4>
+                <p>{product.description}</p>
             </Item>
     </HomeBG>
     );
