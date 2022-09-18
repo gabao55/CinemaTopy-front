@@ -43,8 +43,10 @@ export default function Checkout() {
                 const promise = cleanCart();
 
                 promise
-                    .then(() => navigate("/obrigado", { state: state.name }))
+                    .then()
                     .catch(e => console.log(e.message));
+
+                navigate("/obrigado", { state: state });
             })
             .catch(error => {
                 alert("Erro ao finalizar compra, tente novamente");
