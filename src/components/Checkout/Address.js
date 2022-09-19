@@ -5,6 +5,7 @@ import { addUserPurchaseDetails } from "../../services/axiosService";
 import { Auth, TemplateButton, TemplateInput } from "../../shared/styles";
 import { useForm } from "../../shared/useForm";
 import { CartWrapper } from "../Cart/style";
+import Progress from "../../shared/ProgressBar";
 import { SelectTemplate } from "./style";
 
 export default function Address() {
@@ -45,6 +46,7 @@ export default function Address() {
                 <h1 onClick={() => navigate('/')}>CinemaTopy</h1>
                 <ion-icon name="trash-outline" onClick={resetForm}></ion-icon>
             </header>
+            <Progress percentage={50} />
             <Auth disabled={disabled}>
                 <form onSubmit={sendForm}>
                     <TemplateInput required type="text" name="state" value={form.state}

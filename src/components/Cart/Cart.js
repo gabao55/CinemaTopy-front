@@ -6,6 +6,7 @@ import { CartWrapper } from "./style";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { useForm } from "../../shared/useForm";
+import Progress from "../../shared/ProgressBar";
 
 export default function Cart () {
     const [products, setProducts] = useState([]);
@@ -58,22 +59,25 @@ export default function Cart () {
             {
                 products.length === 0 ?
                 "" :
-                <main>
-                    <h2>Carrinho</h2>
-                    {
-                        products.length === 0 ?
-                        "" :
-                        products.map(product => {
-                            totalPrice += product.productDetails.price * product.amount;
+                <>
+                    <Progress percentage={0} />
+                    <main>
+                        <h2>Carrinho</h2>
+                        {
+                            products.length === 0 ?
+                            "" :
+                            products.map(product => {
+                                totalPrice += product.productDetails.price * product.amount;
 
-                            return <CartProduct key={product.productDetails._id} product={product} itemsDeleted={itemsDeleted} setItemsDeleted={setItemsDeleted} />
-                        })
-                    }
-                    <div className="total">
-                        <span>Total</span>
-                        <strong>R$ {String((totalPrice/100).toFixed(2)).replace('.', ',')}</strong>
-                    </div>
-                </main>
+                                return <CartProduct key={product.productDetails._id} product={product} itemsDeleted={itemsDeleted} setItemsDeleted={setItemsDeleted} />
+                            })
+                        }
+                        <div className="total">
+                            <span>Total</span>
+                            <strong>R$ {String((totalPrice/100).toFixed(2)).replace('.', ',')}</strong>
+                        </div>
+                    </main>
+                </>
             }
             
             <TemplateButton disabled={false} spaced={true} height="45" width="300" 
