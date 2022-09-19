@@ -9,6 +9,7 @@ import Checkout from "../Checkout/Checkout";
 import Address from "../Checkout/Address";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import ThankYouPage from "../Checkout/ThankYouPage";
+import Purchase from "../Purchase/Purchase";
 
 export default function App() {
   
@@ -25,6 +26,13 @@ export default function App() {
             element={
               <PrivatePage>
                 <Cart />
+              </PrivatePage>
+            }
+          /> 
+          <Route path="/compras"
+            element={
+              <PrivatePage>
+                <Purchase />
               </PrivatePage>
             }
           /> 
