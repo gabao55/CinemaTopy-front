@@ -78,4 +78,10 @@ function productDetails(id) {
   return promise;
 }
 
-export { singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart, listProducts, addProduct, addUserPurchaseDetails, checkout, productDetails };
+function listPurchases() {
+  const header = createHeader();
+  const promise = axios.get(BASE_URL + "checkout", header);
+  return promise;
+}
+
+export { listPurchases, singUp, login, validToken, listCartProducts, updateCartProductAmount, deleteCartProduct, cleanCart, listProducts, addProduct, addUserPurchaseDetails, checkout, productDetails };
