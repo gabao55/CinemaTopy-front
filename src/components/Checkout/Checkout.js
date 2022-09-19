@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { checkout, cleanCart, listCartProducts } from "../../services/axiosService";
 import { TemplateButton } from "../../shared/styles";
 import { CartWrapper } from "../Cart/style";
+import Progress from "../../shared/ProgressBar";
 import { UserData } from "./style";
 
 export default function Checkout() {
@@ -59,6 +60,7 @@ export default function Checkout() {
                 <h1 onClick={() => navigate('/')}>CinemaTopy</h1>
                 <p></p>
             </header>
+            <Progress percentage={100} />
             <main>
                 <h2>Produtos</h2>
                 {
